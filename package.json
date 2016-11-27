@@ -1,0 +1,27 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "resume project",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decolon/frontend-nanodegree-resume.git"
+  },
+  "keywords": [
+    "Udacity"
+  ],
+  "author": "Daniel Colon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/decolon/frontend-nanodegree-resume/issues"
+  },
+  "homepage": "https://github.com/decolon/frontend-nanodegree-resume#readme",
+  "devDependencies": {
+    "gulp-jslint": "^1.0.5",
+    "gulp-livereload": "^3.8.1",
+    "gulp-plumber": "^1.1.0"
+  }
+}
