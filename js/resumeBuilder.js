@@ -1,7 +1,6 @@
 /*global
 $, jQuery,HTMLheaderName, HTMLheaderRole,HTMLcontactGeneric,HTMLmobile,HTMLemail,HTMLtwitter,HTMLgithub,HTMLblog,HTMLlocation,HTMLbioPic,HTMLwelcomeMsg,HTMLskillsStart,HTMLskills,HTMLworkStart,HTMLworkEmployer,HTMLworkTitle,HTMLworkDates,HTMLworkLocation,HTMLworkDescription,HTMLprojectStart,HTMLprojectTitle,HTMLprojectDates,HTMLprojectDescription,HTMLprojectImage,HTMLschoolStart,HTMLschoolName,HTMLschoolDegree,HTMLschoolDates,HTMLschoolLocation,HTMLschoolMajor,HTMLonlineClasses,HTMLonlineTitle,HTMLonlineSchool,HTMLonlineDates,HTMLonlineURL,internationalizeButton,googleMap
 */
-
 $('#mapDiv').append(googleMap);
 
 var bio = {
@@ -54,38 +53,32 @@ var bio = {
 };
 
 var education = {
-    schools: [
-        {
-            name: "Empire State University",
-            location: "New York City",
-            degree: "Bachelors of Science",
-            majors: "Computer Science",
-            dates: "1989 - 1992",
-            url: "https://en.wikipedia.org/wiki/Empire_State_University"
-        },
-        {
-            name: "MidTown High School",
-            location: "Brooklyn, NY",
-            degree: "High School Diploma",
-            majors: "Engineering",
-            dates: "1985 - 1989",
-            url: "http://marvel.com/universe/Midtown_High_School"
-        }
-    ],
-    onlineCourses: [
-        {
-            title: "Journey of the Universe: The Unfolding of Life",
-            school: "Coursera",
-            dates: "1986 - 1986",
-            url: "https://www.coursera.org/specializations/journey-of-the-universe"
-        },
-        {
-            title: " Journey of the Universe: Weaving Knowledge and Action",
-            school: "Coursera",
-            dates: "1986 - 1986",
-            url: "https://www.coursera.org/specializations/journey-of-the-universe"
-        }
-    ],
+    schools: [{
+        name: "Empire State University",
+        location: "New York City",
+        degree: "Bachelors of Science",
+        majors: "Computer Science",
+        dates: "1989 - 1992",
+        url: "https://en.wikipedia.org/wiki/Empire_State_University"
+    }, {
+        name: "MidTown High School",
+        location: "Brooklyn, NY",
+        degree: "High School Diploma",
+        majors: "Engineering",
+        dates: "1985 - 1989",
+        url: "http://marvel.com/universe/Midtown_High_School"
+    }],
+    onlineCourses: [{
+        title: "Journey of the Universe: The Unfolding of Life",
+        school: "Coursera",
+        dates: "1986 - 1986",
+        url: "https://www.coursera.org/specializations/journey-of-the-universe"
+    }, {
+        title: " Journey of the Universe: Weaving Knowledge and Action",
+        school: "Coursera",
+        dates: "1986 - 1986",
+        url: "https://www.coursera.org/specializations/journey-of-the-universe"
+    }],
     display: function () {
         "use strict";
         education.schools.forEach(function (item) {
@@ -120,22 +113,19 @@ var education = {
 };
 
 var work = {
-    jobs: [
-        {
-            employer: "Daily Bugle",
-            title: "Freelance Photographer",
-            location: "Harlem, NY",
-            dates: "1990 - Present ",
-            description: "Taking pictures of himself"
-        },
-        {
-            employer: "Pizza Shop",
-            title: "Delivery Man",
-            location: "New York City",
-            dates: "1986 - 1989 ",
-            description: "Pizza Delivery man"
-        }
-    ],
+    jobs: [{
+        employer: "Daily Bugle",
+        title: "Freelance Photographer",
+        location: "Harlem, NY",
+        dates: "1990 - Present ",
+        description: "Taking pictures of himself"
+    }, {
+        employer: "Pizza Shop",
+        title: "Delivery Man",
+        location: "New York City",
+        dates: "1986 - 1989 ",
+        description: "Pizza Delivery man"
+    }],
     display: function () {
         "use strict";
         work.jobs.forEach(function (item) {
@@ -155,29 +145,26 @@ var work = {
 };
 
 var projects = {
-    projects: [
-        {
-            title: "Bionic Cat",
-            dates: "1987 - 1987",
-            description: "Built a bionic cat",
-            images: [
-                "http://placekitten.com/g/200/300",
-                "http://placekitten.com/g/200/300",
-                "http://placekitten.com/g/200/300",
-                "http://placekitten.com/g/200/300"
-            ]
-        },
-        {
-            title: "Bear Taming",
-            dates: "1987 - 1988",
-            description: "Tamed a bear",
-            images: [
-                "http://placebear.com/g/200/300",
-                "http://placebear.com/g/200/300",
-                "http://placebear.com/g/200/300"
-            ]
-        }
-    ],
+    projects: [{
+        title: "Bionic Cat",
+        dates: "1987 - 1987",
+        description: "Built a bionic cat",
+        images: [
+            "http://placekitten.com/g/200/300",
+            "http://placekitten.com/g/200/300",
+            "http://placekitten.com/g/200/300",
+            "http://placekitten.com/g/200/300"
+        ]
+    }, {
+        title: "Bear Taming",
+        dates: "1987 - 1988",
+        description: "Tamed a bear",
+        images: [
+            "http://placebear.com/g/200/300",
+            "http://placebear.com/g/200/300",
+            "http://placebear.com/g/200/300"
+        ]
+    }],
     display: function () {
         "use strict";
         projects.projects.forEach(function (item) {
@@ -201,5 +188,3 @@ bio.display();
 work.display();
 projects.display();
 education.display();
-
-
