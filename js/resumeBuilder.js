@@ -2,6 +2,8 @@
 $, jQuery,HTMLheaderName, HTMLheaderRole,HTMLcontactGeneric,HTMLmobile,HTMLemail,HTMLtwitter,HTMLgithub,HTMLblog,HTMLlocation,HTMLbioPic,HTMLwelcomeMsg,HTMLskillsStart,HTMLskills,HTMLworkStart,HTMLworkEmployer,HTMLworkTitle,HTMLworkDates,HTMLworkLocation,HTMLworkDescription,HTMLprojectStart,HTMLprojectTitle,HTMLprojectDates,HTMLprojectDescription,HTMLprojectImage,HTMLschoolStart,HTMLschoolName,HTMLschoolDegree,HTMLschoolDates,HTMLschoolLocation,HTMLschoolMajor,HTMLonlineClasses,HTMLonlineTitle,HTMLonlineSchool,HTMLonlineDates,HTMLonlineURL,internationalizeButton,googleMap
 */
 
+$('#mapDiv').append(googleMap);
+
 var bio = {
     name: "Peter Parker",
     role: "Pizza Delivery Man",
@@ -10,10 +12,10 @@ var bio = {
         email: "spider@man.com",
         github: "peterparker",
         twitter: "@spiderman",
-        location: "New York City"
+        location: "Queens, NY"
     },
     welcomeMessage: "Hello and welcome to my fantastic resume",
-    skills: ["Science", "web slinging", "witty banter", "fighting crime"],
+    skills: ["science", "web slinging", "witty banter", "fighting crime"],
     biopic: "http://i.annihil.us/u/prod/marvel/i/mg/2/00/53710b14a320b.png",
     display: function () {
         "use strict";
@@ -38,6 +40,16 @@ var bio = {
         $('#header').append(formatedWelcome);
         $('#header').append(HTMLskillsStart);
 
+        $('#footerContacts').append(formatedMobile);
+        $('#footerContacts').append(formatedEmail);
+        $('#footerContacts').append(formatedGithub);
+        $('#footerContacts').append(formatedTwitter);
+        $('#footerContacts').append(formatedLocation);
+
+        bio.skills.forEach(function (item) {
+            var formatedSkill = HTMLskills.replace('%data%', item);
+            $('#skills').append(formatedSkill);
+        });
     }
 };
 
@@ -53,7 +65,7 @@ var education = {
         },
         {
             name: "MidTown High School",
-            location: "New York City",
+            location: "Brooklyn, NY",
             degree: "High School Diploma",
             majors: "Engineering",
             dates: "1985 - 1989",
@@ -76,7 +88,34 @@ var education = {
     ],
     display: function () {
         "use strict";
-        console.log("education display");
+        education.schools.forEach(function (item) {
+            var formatedName = HTMLschoolName.replace('%data%', item.name),
+                formatedLocation = HTMLschoolLocation.replace('%data%', item.location),
+                formatedDegree = HTMLschoolDegree.replace('%data%', item.degree),
+                formatedMajors = HTMLschoolMajor.replace('%data%', item.majors),
+                formatedDates = HTMLschoolDates.replace('%data%', item.dates);
+
+            $('#education').append(HTMLschoolStart);
+            $('.education-entry:last').append(formatedName + formatedDegree);
+            $('.education-entry:last').append(formatedDates);
+            $('.education-entry:last').append(formatedMajors);
+            $('.education-entry:last').append(formatedLocation);
+        });
+
+        $('#education').append(HTMLonlineClasses);
+
+        education.onlineCourses.forEach(function (item) {
+            var formatedTitle = HTMLonlineTitle.replace('%data%', item.title),
+                formatedSchool = HTMLonlineSchool.replace('%data%', item.school),
+                formatedDates = HTMLonlineDates.replace('%data%', item.dates),
+                formatedURL = HTMLonlineURL.replace('%data%', item.url);
+
+            $('#education').append(HTMLschoolStart);
+            $('.education-entry:last').append(formatedTitle + formatedSchool);
+            $('.education-entry:last').append(formatedDates);
+            $('.education-entry:last').append(formatedURL);
+        });
+
     }
 };
 
@@ -85,55 +124,82 @@ var work = {
         {
             employer: "Daily Bugle",
             title: "Freelance Photographer",
-            location: "New York City",
-            dates: "1990 - Present",
+            location: "Harlem, NY",
+            dates: "1990 - Present ",
             description: "Taking pictures of himself"
         },
         {
             employer: "Pizza Shop",
             title: "Delivery Man",
             location: "New York City",
-            dates: "1986 - 1989",
+            dates: "1986 - 1989 ",
             description: "Pizza Delivery man"
         }
     ],
     display: function () {
         "use strict";
-        console.log("work display");
+        work.jobs.forEach(function (item) {
+            var formatedEmployer = HTMLworkEmployer.replace('%data%', item.employer),
+                formatedTitle = HTMLworkTitle.replace('%data%', item.title),
+                formatedLocation = HTMLworkLocation.replace('%data%', item.location),
+                formatedDates = HTMLworkDates.replace('%data%', item.dates),
+                formatedDescription = HTMLworkDescription.replace('%data%', item.description);
+
+            $('#workExperience').append(HTMLworkStart);
+            $('.work-entry:last').append(formatedEmployer + formatedTitle);
+            $('.work-entry:last').append(formatedLocation);
+            $('.work-entry:last').append(formatedDates);
+            $('.work-entry:last').append(formatedDescription);
+        });
     }
 };
 
 var projects = {
     projects: [
         {
-            title: "Super Powers",
+            title: "Bionic Cat",
             dates: "1987 - 1987",
-            description: "Found out how to get super powers by letting a spider bite me",
+            description: "Built a bionic cat",
             images: [
-                "http://vignette3.wikia.nocookie.net/vsbattles/images/8/8d/The_Amazing_Spider-Man.png/revision/latest?cb=20151017022603",
-                "https://a.dilcdn.com/bl/wp-content/uploads/sites/28/2016/09/558982863130d.jpg",
-                "https://jovemnerd.com.br/wp-content/uploads/ben_reilly.jpg",
-                "http://vignette2.wikia.nocookie.net/spiderman-films/images/5/5a/Amazing-spider-man-2.png/revision/latest?cb=20160122124949"
+                "http://placekitten.com/g/200/300",
+                "http://placekitten.com/g/200/300",
+                "http://placekitten.com/g/200/300",
+                "http://placekitten.com/g/200/300"
             ]
         },
         {
-            title: "Web Shooters",
+            title: "Bear Taming",
             dates: "1987 - 1988",
-            description: "Designed devices that allow we to shoot webs like a spider",
+            description: "Tamed a bear",
             images: [
-                "https://i.annihil.us/u/prod/marvel//universe3zx/images/9/93/WebShooters_Main.jpg",
-                "https://i.ytimg.com/vi/256dPNpJEgA/hqdefault.jpg",
-                "http://i1.wp.com/www.heyuguys.com/images/2012/04/The-Amazing-Spider-Man-Peter-Parker-Web-Shooter-Design-3.jpg?fit=950%2C426"
+                "http://placebear.com/g/200/300",
+                "http://placebear.com/g/200/300",
+                "http://placebear.com/g/200/300"
             ]
         }
     ],
     display: function () {
         "use strict";
-        console.log("projects display");
+        projects.projects.forEach(function (item) {
+            var formatedTitle = HTMLprojectTitle.replace('%data%', item.title),
+                formatedDates = HTMLprojectDates.replace('%data%', item.dates),
+                formatedDescription = HTMLprojectDescription.replace('%data%', item.description);
+
+            $('#projects').append(HTMLprojectStart);
+            $('.project-entry:last').append(formatedTitle);
+            $('.project-entry:last').append(formatedDates);
+            $('.project-entry:last').append(formatedDescription);
+            item.images.forEach(function (item) {
+                var formatedImage = HTMLprojectImage.replace('%data%', item);
+                $('.project-entry:last').append(formatedImage);
+            });
+        });
     }
 };
 
 bio.display();
-
+work.display();
+projects.display();
+education.display();
 
 
