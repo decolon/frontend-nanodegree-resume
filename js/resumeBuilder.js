@@ -16,7 +16,7 @@ var bio = {
     welcomeMessage: "Hello and welcome to my fantastic resume",
     skills: ["science", "web slinging", "witty banter", "fighting crime"],
     biopic: "http://i.annihil.us/u/prod/marvel/i/mg/2/00/53710b14a320b.png",
-    display: function () {
+    display: function() {
         "use strict";
         var formatedHeaderName = HTMLheaderName.replace('%data%', bio.name),
             formatedHeaderRole = HTMLheaderRole.replace('%data%', bio.role),
@@ -30,22 +30,16 @@ var bio = {
 
         $('#header').prepend(formatedHeaderName);
         $('#topContacts').before(formatedHeaderRole);
-        $('#topContacts').append(formatedMobile);
-        $('#topContacts').append(formatedEmail);
-        $('#topContacts').append(formatedGithub);
-        $('#topContacts').append(formatedTwitter);
-        $('#topContacts').append(formatedLocation);
+        $('#topContacts, #footerContacts').append(formatedMobile);
+        $('#topContacts, #footerContacts').append(formatedEmail);
+        $('#topContacts, #footerContacts').append(formatedGithub);
+        $('#topContacts, #footerContacts').append(formatedTwitter);
+        $('#topContacts, #footerContacts').append(formatedLocation);
         $('#header').append(formatedImage);
         $('#header').append(formatedWelcome);
         $('#header').append(HTMLskillsStart);
 
-        $('#footerContacts').append(formatedMobile);
-        $('#footerContacts').append(formatedEmail);
-        $('#footerContacts').append(formatedGithub);
-        $('#footerContacts').append(formatedTwitter);
-        $('#footerContacts').append(formatedLocation);
-
-        bio.skills.forEach(function (item) {
+        bio.skills.forEach(function(item) {
             var formatedSkill = HTMLskills.replace('%data%', item);
             $('#skills').append(formatedSkill);
         });
@@ -57,14 +51,14 @@ var education = {
         name: "Empire State University",
         location: "New York City",
         degree: "Bachelors of Science",
-        majors: "Computer Science",
+        majors: ["Computer Science"],
         dates: "1989 - 1992",
         url: "https://en.wikipedia.org/wiki/Empire_State_University"
     }, {
         name: "MidTown High School",
         location: "Brooklyn, NY",
         degree: "High School Diploma",
-        majors: "Engineering",
+        majors: ["Engineering", "Crime Fighting", "Woodworking"],
         dates: "1985 - 1989",
         url: "http://marvel.com/universe/Midtown_High_School"
     }],
@@ -79,25 +73,42 @@ var education = {
         dates: "1986 - 1986",
         url: "https://www.coursera.org/specializations/journey-of-the-universe"
     }],
-    display: function () {
+    display: function() {
         "use strict";
-        education.schools.forEach(function (item) {
+        education.schools.forEach(function(item) {
             var formatedName = HTMLschoolName.replace('%data%', item.name),
                 formatedLocation = HTMLschoolLocation.replace('%data%', item.location),
                 formatedDegree = HTMLschoolDegree.replace('%data%', item.degree),
-                formatedMajors = HTMLschoolMajor.replace('%data%', item.majors),
-                formatedDates = HTMLschoolDates.replace('%data%', item.dates);
+                formatedDates = HTMLschoolDates.replace('%data%', item.dates),
+                majorsString = "",
+                formatedMajors = "",
+                majorTemplate = HTMLschoolMajor;
 
             $('#education').append(HTMLschoolStart);
             $('.education-entry:last').append(formatedName + formatedDegree);
             $('.education-entry:last').append(formatedDates);
+
+            item.majors.forEach(function(innerItem, index) {
+                if (index === item.majors.length - 1) {
+                    majorsString += innerItem;
+                } else {
+                    majorsString += innerItem + ", ";
+                }
+            });
+
+            if (item.majors.length > 1) {
+                majorTemplate = majorTemplate.replace('Major', 'Majors');
+            }
+
+            formatedMajors = majorTemplate.replace('%data%', majorsString);
             $('.education-entry:last').append(formatedMajors);
+
             $('.education-entry:last').append(formatedLocation);
         });
 
         $('#education').append(HTMLonlineClasses);
 
-        education.onlineCourses.forEach(function (item) {
+        education.onlineCourses.forEach(function(item) {
             var formatedTitle = HTMLonlineTitle.replace('%data%', item.title),
                 formatedSchool = HTMLonlineSchool.replace('%data%', item.school),
                 formatedDates = HTMLonlineDates.replace('%data%', item.dates),
@@ -126,9 +137,9 @@ var work = {
         dates: "1986 - 1989 ",
         description: "Pizza Delivery man"
     }],
-    display: function () {
+    display: function() {
         "use strict";
-        work.jobs.forEach(function (item) {
+        work.jobs.forEach(function(item) {
             var formatedEmployer = HTMLworkEmployer.replace('%data%', item.employer),
                 formatedTitle = HTMLworkTitle.replace('%data%', item.title),
                 formatedLocation = HTMLworkLocation.replace('%data%', item.location),
@@ -165,9 +176,9 @@ var projects = {
             "http://placebear.com/g/200/300"
         ]
     }],
-    display: function () {
+    display: function() {
         "use strict";
-        projects.projects.forEach(function (item) {
+        projects.projects.forEach(function(item) {
             var formatedTitle = HTMLprojectTitle.replace('%data%', item.title),
                 formatedDates = HTMLprojectDates.replace('%data%', item.dates),
                 formatedDescription = HTMLprojectDescription.replace('%data%', item.description);
@@ -176,7 +187,7 @@ var projects = {
             $('.project-entry:last').append(formatedTitle);
             $('.project-entry:last').append(formatedDates);
             $('.project-entry:last').append(formatedDescription);
-            item.images.forEach(function (item) {
+            item.images.forEach(function(item) {
                 var formatedImage = HTMLprojectImage.replace('%data%', item);
                 $('.project-entry:last').append(formatedImage);
             });
