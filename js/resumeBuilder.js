@@ -1,19 +1,43 @@
+/*global
+$, jQuery,HTMLheaderName, HTMLheaderRole,HTMLcontactGeneric,HTMLmobile,HTMLemail,HTMLtwitter,HTMLgithub,HTMLblog,HTMLlocation,HTMLbioPic,HTMLwelcomeMsg,HTMLskillsStart,HTMLskills,HTMLworkStart,HTMLworkEmployer,HTMLworkTitle,HTMLworkDates,HTMLworkLocation,HTMLworkDescription,HTMLprojectStart,HTMLprojectTitle,HTMLprojectDates,HTMLprojectDescription,HTMLprojectImage,HTMLschoolStart,HTMLschoolName,HTMLschoolDegree,HTMLschoolDates,HTMLschoolLocation,HTMLschoolMajor,HTMLonlineClasses,HTMLonlineTitle,HTMLonlineSchool,HTMLonlineDates,HTMLonlineURL,internationalizeButton,googleMap
+*/
+
 var bio = {
     name: "Peter Parker",
     role: "Pizza Delivery Man",
     contacts: {
         mobile: "111-111-1111",
         email: "spider@man.com",
-        github: "https://github.com/peterparker/resume",
-        twitter: "https://twitter.com/spiderman",
-        location: "20 Ingram Street, Queens, NY 11375"
+        github: "peterparker",
+        twitter: "@spiderman",
+        location: "New York City"
     },
     welcomeMessage: "Hello and welcome to my fantastic resume",
-    skills: "Science, web slinging, witty banter, fighting crime",
+    skills: ["Science", "web slinging", "witty banter", "fighting crime"],
     biopic: "http://i.annihil.us/u/prod/marvel/i/mg/2/00/53710b14a320b.png",
     display: function () {
         "use strict";
-        console.log("bio display");
+        var formatedHeaderName = HTMLheaderName.replace('%data%', bio.name),
+            formatedHeaderRole = HTMLheaderRole.replace('%data%', bio.role),
+            formatedMobile = HTMLmobile.replace('%data%', bio.contacts.mobile),
+            formatedEmail = HTMLemail.replace('%data%', bio.contacts.email),
+            formatedGithub = HTMLgithub.replace('%data%', bio.contacts.github),
+            formatedTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter),
+            formatedLocation = HTMLlocation.replace('%data%', bio.contacts.location),
+            formatedWelcome = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage),
+            formatedImage = HTMLbioPic.replace('%data%', bio.biopic);
+
+        $('#header').prepend(formatedHeaderName);
+        $('#topContacts').before(formatedHeaderRole);
+        $('#topContacts').append(formatedMobile);
+        $('#topContacts').append(formatedEmail);
+        $('#topContacts').append(formatedGithub);
+        $('#topContacts').append(formatedTwitter);
+        $('#topContacts').append(formatedLocation);
+        $('#header').append(formatedImage);
+        $('#header').append(formatedWelcome);
+        $('#header').append(HTMLskillsStart);
+
     }
 };
 
@@ -108,6 +132,8 @@ var projects = {
         console.log("projects display");
     }
 };
+
+bio.display();
 
 
 
